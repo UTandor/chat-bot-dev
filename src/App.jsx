@@ -2,6 +2,7 @@
 import ChatPage from "./components/ChatPage";
 import Header from "./components/Header";
 import WelcomePage from "./components/WelcomePage";
+import Examples from './components/Examples'
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
             <Routes>
               <Route path="/" element={<WelcomePage />} />
               <Route path="/chat" element={<ChatPage />} />
+              <Route path="/examples" element={<Examples />} />
               <Route path="/chat/:msg" element={<ChatPage />} />
             </Routes>
           </div>

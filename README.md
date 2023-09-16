@@ -15,6 +15,8 @@
 - **Welcome Page**: The application loads a welcome page.
 - **Chat Interaction**: Users can enter chat messages.
 - **Dynamic Routing**: Users can change the URL to "/chat/{message}" for specific chat interactions.
+- **Examples**: The user can click an example and it will load it into the chat thing.
+- **Languages UI**: Consists of a modal with buttons showing the languages which are useable.
 
 ### Routing
 
@@ -26,9 +28,7 @@
 
 - Integration with a real AI chat bot backend to provide meaningful responses.
 - Enhanced styling and visual improvements for a more engaging user experience.
-- Implementation of user authentication for personalized chat interactions.
 - Support for multiple languages to cater to a wider audience.
-- Mobile responsiveness to ensure a seamless experience on various devices.
 - Improved error handling and bug fixes for a smoother user experience.
 
 ## Contributors
