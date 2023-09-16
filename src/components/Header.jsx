@@ -17,7 +17,7 @@ const Header = () => {
     <>
       <div className="flex items-center bg-gray-100 justify-center p-2">
         <div className="text-center items-center p-5">
-          <h1 className="text-3xl font-bold mb-4">AgriAI</h1>
+          <h1 className="text-3xl font-bold mb-4">ChatAI</h1>
           <p className="text-lg font-semibold mb-4">
             AI Agriculture Assistant for Pakistan!
           </p>
