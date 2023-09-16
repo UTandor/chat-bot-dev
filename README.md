@@ -1,6 +1,6 @@
-# Chat Bot UI Project README
+# Chat Bot UI Development Git
 
-## Technology Stack
+## Tech Stack
 
 - **React**: The project is built using the React library for creating user interfaces.
 
