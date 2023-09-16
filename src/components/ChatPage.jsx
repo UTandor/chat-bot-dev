@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 
 const ChatPage = () => {
   const [inputMessage, setInputMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const { msg } = useParams();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,7 +17,7 @@ const ChatPage = () => {
 
       const aiResponseMessage = {
         message:
-          "Test Reponse of AI before API integration for i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inrfor i inr",
+          "Test Reponse of AI before API integration to a normal message",
         isUser: false,
       };
 
@@ -23,6 +25,24 @@ const ChatPage = () => {
       setInputMessage("");
     }
   };
+
+  useEffect(() => {
+    if (msg) {
+      const newUserMessage = {
+        message: msg,
+        isUser: true,
+      };
+  
+      const aiResponseMessage = {
+        message:
+          "Test Response of AI before API integration to an example selected message",
+        isUser: false,
+      };
+  
+      setMessages([...messages, newUserMessage, aiResponseMessage]);
+      console.log(messages);
+    }
+  }, [msg]);
 
   return (
     <>
@@ -73,7 +93,6 @@ const ChatPage = () => {
               width="16"
               height="16"
               fill="currentColor"
-              class="bi bi-mic"
               viewBox="0 0 16 16"
             >
               {" "}
@@ -109,9 +128,9 @@ const ChatPage = () => {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
                 ></path>
               </svg>
@@ -119,25 +138,24 @@ const ChatPage = () => {
           </button>
         </div>
         <div className="ml-2">
-          <a
-            className="flex items-center justify-center text-gray-600 hover:text-gray-800"
-            href="/"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </a>
+          <Link to="/">
+            <button className="flex items-center justify-center text-gray-600 hover:text-gray-800">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </Link>
         </div>
       </div>
     </>

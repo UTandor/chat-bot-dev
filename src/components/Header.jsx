@@ -2,14 +2,14 @@ import React from "react";
 
 const Header = () => {
   return (
-    <div class="flex items-center bg-gray-100 justify-center p-2">
-      <div class="text-center items-center p-5">
-        <h1 class="text-3xl font-bold mb-2">AgriAI</h1>
-        <p class="text-md font-semibold mb-4">
+    <div className="flex items-center bg-gray-100 justify-center p-2">
+      <div className="text-center items-center p-5">
+        <h1 className="text-3xl font-bold mb-2">AgriAI</h1>
+        <p className="text-md font-semibold mb-4">
           AI Agriculture Assistant for Pakistan!
         </p>
-        <div class="flex items-center space-x-7 pl-14">
-          <button class="bg-gray-200 self-center text-green-600 font-semibold rounded-md py-1 px-4">
+        <div className="flex items-center space-x-7 pl-14">
+          <button className="bg-gray-200 self-center text-green-600 font-semibold rounded-md py-1 px-4">
             English
           </button>
           <svg
