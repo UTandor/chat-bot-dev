@@ -17,7 +17,7 @@ const ChatPage = () => {
 
       const aiResponseMessage = {
         message:
-          "Test Reponse of AI before API integration to a normal message",
+          "Test Reponse of AI before API integration to a normal message ",
         isUser: false,
       };
 
@@ -86,20 +86,22 @@ const ChatPage = () => {
       </div>
       <div className="flex flex-row items-center h-16 rounded-xl bg-white w-3/4 self-center mb-4 px-4 py-5">
         <div>
-          <button className="flex items-center justify-center text-gray-600 hover:text-gray-800">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6"
-              width="16"
-              height="16"
-              fill="currentColor"
-              viewBox="0 0 16 16"
-            >
-              {" "}
-              <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z" />{" "}
-              <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z" />{" "}
-            </svg>
-          </button>
+          <Link to="/r">
+            <button className="flex items-center justify-center text-gray-600 hover:text-gray-800">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-6 h-6"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                {" "}
+                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z" />{" "}
+                <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z" />{" "}
+              </svg>
+            </button>
+          </Link>
         </div>
         <div className="flex-grow ml-4">
           <div className="relative w-full">

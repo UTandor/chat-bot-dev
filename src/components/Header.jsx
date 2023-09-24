@@ -9,9 +9,7 @@ const Header = () => {
     "Punjabi",
     "Siraiki",
     "Hindi",
-    "Sindhi",
-    "Japaneese",
-    "Gujrati",
+    "Indonesian",
   ];
   return (
     <>
@@ -24,7 +22,7 @@ const Header = () => {
           <div className="flex items-center justify-center">
             <button
               type="button"
-              className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2.5 py-1.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800"
+              className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-2.5 py-1.5 text-center mr-2 mb-2"
               data-modal-target="popup-modal"
               data-modal-toggle="popup-modal"
               onClick={() => setShowModal(true)}
@@ -39,7 +37,7 @@ const Header = () => {
                     <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                       {/*header*/}
                       <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                        <h3 className="text-3xl font-semibold">Modal Title</h3>
+                        <h3 className="text-2xl font-semibold">Languages</h3>
                         <button
                           className="p-1 ml-auto bg-solid border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                           onClick={() => setShowModal(false)}
@@ -66,8 +64,8 @@ const Header = () => {
                           <Link
                             key={index}
                             type="button"
-                            className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-2.5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-                            to={`/chat/Greet me in ${item}`}
+                            className="text-blue-900 bg-white border border-blue-500 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-2 py-1.5 mr-2 mb-2 "
+                            to={`/c/${item}`}
                           >
                             {item}
                           </Link>

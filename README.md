@@ -34,7 +34,7 @@
 ## Contributors
 
 - Usman Tanveer: Project Developer
-- Sarfraz Khan: Idea Contributor
+- Sarfraz Khan: Producer
 
 ## License
 
