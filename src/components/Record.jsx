@@ -69,18 +69,13 @@ const Record = () => {
           >
             Tips on better speech.
           </p>
-          <Link to="/c">
-            <button className="bg-green-500 mt-5 hover:bg-green-700  text-white font-semibold py-2 px-4 rounded-md">
-              Chat Instead
-            </button>
-          </Link>
 
           <div className="flex flex-col">
             <h1 className="text-xl mb-2 font-semibold mt-10">What you said</h1>
             <p>{text}</p>
             {text ? (
               <Link to={`/c/${encodeURIComponent(text)}`}>
-                <button type="button" className="mt-5 py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200">Continue</button>
+                <button type="button" className="mt-5 py-2 px-3 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200"><i className="material-icons" style={{fontSize:'32px'}}>arrow_right_alt</i></button>
               </Link>
             ) : (
               <p className="text-sm text-gray-500">

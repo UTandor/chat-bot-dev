@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const HeroHeader = () => {
   const [showModal, setShowModal] = React.useState(false);
   const languages = [
     "English",
@@ -11,24 +11,41 @@ const Header = () => {
     "Hindi",
     "Indonesian",
   ];
+  const homeIcon = {
+    fontSize: "36px",
+    marginBottom: "0.75rem",
+    color: "#444"
+  };
+  const settingsIcon = {
+    fontSize: "26px",
+    marginBottom: "0.5rem",
+  }
   return (
     <>
-      <div className="flex items-center bg-gray-100 justify-center p-2">
+      <div className="flex items-center bg-gray-100 justify-center">
         <div className="text-center items-center p-5">
-          <h1 className="text-3xl font-bold mb-4">ChatAI</h1>
-          <p className="text-lg font-semibold mb-4">
+          <Link to="/">
+            <div className="flex justify-center items-center space-x-2">
+              <i className="material-icons" style={homeIcon}>home</i>
+              <h1 className="text-4xl hover:cursor-pointer font-bold mb-4">
+                ChatAI
+              </h1>
+            </div>
+          </Link>
+          <p className="text-xl font-medium text-gray-500 mb-4">
             AI Agriculture Assistant for Pakistan!
           </p>
           <div className="flex items-center justify-center">
             <button
               type="button"
-              className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-2.5 py-1.5 text-center mr-2 mb-2"
+              className="text-white bg-gray-700 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-md px-3 py-1.5 mr-2 mb-2"
               data-modal-target="popup-modal"
               data-modal-toggle="popup-modal"
               onClick={() => setShowModal(true)}
             >
               English
             </button>
+            <i className="material-icons hover:cursor-pointer" style={settingsIcon} onClick={() => setShowModal(true)}>settings</i>
             {showModal ? (
               <>
                 <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -64,7 +81,7 @@ const Header = () => {
                           <Link
                             key={index}
                             type="button"
-                            className="text-blue-900 bg-white border border-blue-500 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-2 py-1.5 mr-2 mb-2 "
+                            className="text-blue-900 bg-white border border-gray-500 focus:outline-none hover:bg-gray-100 font-medium rounded-lg text-sm px-2 py-1.5 mr-2 mb-2 "
                             to={`/c/${item}`}
                           >
                             {item}
@@ -83,4 +100,4 @@ const Header = () => {
     </>
   );
 };
-export default Header;
+export default HeroHeader;

@@ -40,7 +40,6 @@ const ChatPage = () => {
       };
   
       setMessages([...messages, newUserMessage, aiResponseMessage]);
-      console.log(messages);
     }
   }, [msg]);
 

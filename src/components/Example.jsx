@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const buttonsData = [
-  "How to improve soil condition?",
+  "How to improve soil condition in interior Sindh areas?",
   "What are the most effective methods for pest control on cabbage?",
-  "What is the best time to plant okra in Pakistan?",
+  "What is the best time to plant okra in Pakistan's dry climate areas?",
   "What are the most effective methods for pest control on mango tree?",
 ];
 

@@ -6,14 +6,25 @@ const WelcomePage = () => {
   return (
     <div className="flex space-y-2 flex-wrap w-full items-center justify-center p-4">
       <div>
-        <Link to="/c">
-          <button
-            type="button"
-            className="focus:outline-none text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-600 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
-          >
-            Ask AI
-          </button>
-        </Link>
+        <div class="inline-flex rounded-md shadow-sm" role="group">
+          <Link to="/r">
+            <button
+              type="button"
+              class="px-5 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-l-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white"
+            >
+              <i className="material-icons">mic</i>
+            </button>
+          </Link>
+
+          <Link to="/c">
+            <button
+              type="button"
+              class="px-5 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-r-md hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white "
+            >
+              <i className="material-icons">keyboard</i>
+            </button>
+          </Link>
+        </div>
       </div>
       <div className="w-full">
         <h1 className="text-xl my-5 font-semibold text-gray-800">
