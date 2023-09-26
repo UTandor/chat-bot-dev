@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next"; // Import useTranslation
 
 const ChatPage = () => {
+  const { t } = useTranslation(); // Access the translation function
+
   const [inputMessage, setInputMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const { msg } = useParams();
@@ -16,8 +19,7 @@ const ChatPage = () => {
       };
 
       const aiResponseMessage = {
-        message:
-          "Test Reponse of AI before API integration to a normal message ",
+        message: t("aiResponseMessage"), // Get translated AI response message
         isUser: false,
       };
 
@@ -32,13 +34,12 @@ const ChatPage = () => {
         message: msg,
         isUser: true,
       };
-  
+
       const aiResponseMessage = {
-        message:
-          "Test Response of AI before API integration to an example selected message",
+        message: t("aiResponseMessageExample"), // Get translated AI response message for examples
         isUser: false,
       };
-  
+
       setMessages([...messages, newUserMessage, aiResponseMessage]);
     }
   }, [msg]);
@@ -107,7 +108,7 @@ const ChatPage = () => {
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
-                placeholder="Type your message here..."
+                placeholder={t("messagePlaceholder")} // Get translated placeholder
                 className="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}

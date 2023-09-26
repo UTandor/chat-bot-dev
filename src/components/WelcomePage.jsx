@@ -1,16 +1,19 @@
 import React from "react";
 import Example from "./Example";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next"; // Import useTranslation
 
 const WelcomePage = () => {
+  const { t } = useTranslation(); // Access the translation function
+
   return (
     <div className="flex space-y-2 flex-wrap w-full items-center justify-center p-4">
       <div>
-        <div class="inline-flex rounded-md shadow-sm" role="group">
+        <div className="inline-flex rounded-md shadow-sm" role="group">
           <Link to="/r">
             <button
               type="button"
-              class="px-5 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-l-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white"
+              className="px-5 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-l-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white"
             >
               <i className="material-icons">mic</i>
             </button>
@@ -19,7 +22,7 @@ const WelcomePage = () => {
           <Link to="/c">
             <button
               type="button"
-              class="px-5 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-r-md hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white "
+              className="px-5 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-r-md hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white "
             >
               <i className="material-icons">keyboard</i>
             </button>
@@ -28,14 +31,16 @@ const WelcomePage = () => {
       </div>
       <div className="w-full">
         <h1 className="text-xl my-5 font-semibold text-gray-800">
-          Few examples to ask!
+          {t("welcomePageTitle")} {/* Translate the title */}
         </h1>
       </div>
       <div>
         <Example />
       </div>
       <Link className="flex justify-center w-full" to="/e">
-        <h1 className="text-md font-medium text-gray-800">More Examples</h1>
+        <h1 className="text-md font-medium text-gray-800">
+          {t("moreExamples")} {/* Translate the link text */}
+        </h1>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"

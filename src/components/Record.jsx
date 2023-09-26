@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useSpeechRecognitionHook from "../hooks/useSpeechRecognitionHook";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next"; // Import the useTranslation hook
 
 const Record = () => {
   const iconStyle = {
@@ -48,6 +49,9 @@ const Record = () => {
     stopListening(); // Call the function to stop listening
   };
 
+  // Use the useTranslation hook to access translations
+  const { t } = useTranslation();
+
   return (
     <div className="flex justify-center space-y-3 flex-col items-center h-screen mb-40">
       {hasRecognitionSupport ? (
@@ -60,18 +64,20 @@ const Record = () => {
             onClick={isRecording ? stopRecording : startRecording}
           >
             <i className="material-icons" style={iconStyle}>
-              {isRecording ? "stop" : "keyboard_voice"}
+              {isRecording ? t("stopRecordingButton") : "keyboard_voice"}
             </i>
           </button>
           <p
             onClick={() => setShowModal(true)}
             className="font-medium text-blue-600 underline dark:text-blue-500 hover:cursor-pointer hover:no-underline"
           >
-            Tips on better speech.
+            {t("tipsLink")}
           </p>
 
           <div className="flex flex-col">
-            <h1 className="text-xl mb-2 font-semibold mt-10">What you said</h1>
+            <h1 className="text-xl mb-2 font-semibold mt-10">
+              {t("whatYouSaidLabel")}
+            </h1>
             <p>{text}</p>
             {text ? (
               <Link to={`/c/${encodeURIComponent(text)}`}>
@@ -79,7 +85,7 @@ const Record = () => {
               </Link>
             ) : (
               <p className="text-sm text-gray-500">
-                Couldn't catch that. Can you try again?
+                {t("tryAgainMessage")}
               </p>
             )}
           </div>
@@ -87,10 +93,10 @@ const Record = () => {
       ) : (
         <React.Fragment>
           <h1 className="text-2xl mt-10 font-semibold">
-            Voice Recognitzation not supported.
+            {t("voiceNotSupportedTitle")}
           </h1>
           <p className="text-lg">
-            Please try using Chrome or Safari instead to use voice commands.
+            {t("voiceNotSupportedMessage")}
           </p>
         </React.Fragment>
       )}
@@ -100,18 +106,15 @@ const Record = () => {
           <div className="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded-lg shadow-lg z-50 overflow-y-auto">
             <div className="modal-content py-4 text-center px-6">
               <h1 className="text-3xl font-semibold">
-                Tips for a Great Experience
+                {t("tipsModalTitle")}
               </h1>
               <ul className="list-disc text-sm list-inside text-left mt-4">
-                <li className="mb-2">Minimize background noise.</li>
-                <li className="mb-2">Wait 3 seconds before starting.</li>
-                <li className="mb-2">Speak clearly, at a moderate pace.</li>
-                <li className="mb-2">Avoid background distortion.</li>
-                <li className="mb-2">Use English for better results.</li>
+                {t("tipsList", { returnObjects: true }).map((tip, index) => (
+                  <li key={index} className="mb-2">{tip}</li>
+                ))}
               </ul>
               <p className="text-gray-600 text-sm mt-4">
-                Following these tips will help you get the best results when
-                using our service.
+                {t("tipsModalDescription")}
               </p>
             </div>
             <div className="modal-footer py-4 px-6">
@@ -119,7 +122,7 @@ const Record = () => {
                 className="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded-lg mr-4"
                 onClick={() => setShowModal(false)}
               >
-                Close
+                {t("closeButton")}
               </button>
             </div>
           </div>

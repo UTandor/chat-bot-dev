@@ -1,0 +1,46 @@
+{
+  "buttonsData": [
+    "How to improve soil condition in interior Sindh areas?",
+    "What are the most effective methods for pest control on cabbage?",
+    "What is the best time to plant okra in Pakistan's dry climate areas?",
+    "What are the most effective methods for pest control on mango tree?"
+  ],
+  "buttonsDataExamples": [
+    "What are the major crops grown in Pakistan?",
+    "How can farmers mitigate the impact of water scarcity in Pakistani agriculture?",
+    "What are the recommended organic farming practices in Pakistan?",
+    "Could you provide information on crop rotation techniques in Pakistani farming?",
+    "What are the common diseases affecting wheat crops in Pakistan, and how can they be managed?",
+    "What is the role of government policies in supporting agriculture in Pakistan?",
+    "Can you explain the benefits of using drip irrigation in Pakistani farming?",
+    "What are the key challenges faced by small-scale farmers in Pakistan?",
+    "Are there any new technologies or innovations in Pakistani agriculture that farmers should be aware of?"
+  ],
+  "aiResponseMessage": "Test Response of AI API integration to a normal message",
+  "aiResponseMessageExample": "Test Response of AI before API integration to an example selected message",
+  "messagePlaceholder": "Type your message here...",
+  "welcomePageTitle": "Few examples to ask!",
+  "moreExamples": "More Examples",
+  "lessExamples": "Less Examples",
+  "aiAssistantName": "ChatAI",
+  "aiAssistantDescription": "AI Agriculture Assistant for Pakistan!",
+  "languages": "Languages",
+  "timerLabel": "Recording Time",
+  "startRecordingButton": "Start Recording",
+  "stopRecordingButton": "Stop Recording",
+  "tipsLink": "Tips on better speech.",
+  "tryAgainMessage": "Couldn't catch that. Can you try again?",
+  "voiceNotSupportedTitle": "Voice Recognition not supported.",
+  "voiceNotSupportedMessage": "Please try using Chrome or Safari instead to use voice commands.",
+  "tipsModalTitle": "Tips for a Great Experience",
+  "tipsList": [
+    "Minimize background noise.",
+    "Wait 3 seconds before starting.",
+    "Speak clearly, at a moderate pace.",
+    "Avoid background distortion.",
+    "Use English for better results."
+  ],
+  "tipsModalDescription": "Following these tips will help you get the best results when using our service.",
+  "closeButton": "Close",
+  "whatYouSaidLabel": "What you said"
+}
