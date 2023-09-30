@@ -9,8 +9,9 @@ const HeroHeader = () => {
     "English",
     "Urdu",
     "Punjabi",
-    "Hindi",
+    "Sindhi",
     "Balochi",
+    "Pashto"
   ];
   const homeIcon = {
     fontSize: "36px",

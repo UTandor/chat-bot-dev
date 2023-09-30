@@ -42,9 +42,9 @@ const ChatPage = () => {
   }, [msg]);
 
   async function processMessageToChatGpt(message) {
-    const API_KEY = "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";
+    const API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
     const apiUrl = "https://api.openai.com/v1/chat/completions"; // Replace with your API endpoint
-  
+
     const requestBody = {
       model: "gpt-3.5-turbo",
       messages: [
@@ -55,11 +55,11 @@ const ChatPage = () => {
         },
         {
           role: "user",
-          content: message,
+          content: message + `. Please respond in ${i18next.language} alphabet, if not then respond in urdu alphabet`,
         },
       ],
     };
-  
+
     try {
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -69,31 +69,28 @@ const ChatPage = () => {
         },
         body: JSON.stringify(requestBody),
       });
-  
+
       if (!response.ok) {
         throw new Error("Failed to fetch AI response.");
       }
-  
+
       const responseData = await response.json();
-  
+
       // Update AI response based on the API response
       const aiResponse = responseData.choices[0].message.content;
-  
+
       // Create a new AI response message object
       const aiMessage = {
         message: aiResponse,
         isUser: false,
       };
-  
+
       // Use the functional update form of setMessages to ensure the latest state
       setMessages((prevMessages) => [...prevMessages, aiMessage]);
     } catch (error) {
       console.error("Error processing AI response:", error);
     }
   }
-  
-  
-  
 
   return (
     <>
