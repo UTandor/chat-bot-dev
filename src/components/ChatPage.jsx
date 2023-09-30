@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next"; // Import useTranslation
 import i18next from "i18next";
+import PlayPauseTTS from "./PlayPauseTTS";
 
 const ChatPage = () => {
   const { t } = useTranslation();
@@ -9,6 +10,9 @@ const ChatPage = () => {
   const [inputMessage, setInputMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const { msg } = useParams();
+  const [isHovered, setIsHovered] = useState(false);
+
+  const [testMsg, setMsg] = useState("Hey is this working?");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,7 +40,6 @@ const ChatPage = () => {
 
       setMessages([...messages, newUserMessage]);
 
-      // Call the function to process the received message
       processMessageToChatGpt(msg);
     }
   }, [msg]);
@@ -51,11 +54,11 @@ const ChatPage = () => {
         {
           role: "system",
           content:
-            "ou're an AI agricultural assistant for Sarfraz's project, created by Usman Tanveer. Max response: 300 tokens, aim for brevity",
+            "You're an AI agricultural assistant for Sarfraz's project, created by Usman Tanveer. Max response: 300 tokens, aim for brevity and when I say /lang and then a langage, you must respond in that languuage in the urdu alphabet if it is not english other wise respond in english",
         },
         {
           role: "user",
-          content: message + `. Please respond in ${i18next.language} alphabet, if not then respond in urdu alphabet`,
+          content: message + `. /lang ${i18next.language}`,
         },
       ],
     };
@@ -102,29 +105,43 @@ const ChatPage = () => {
                 <div
                   key={index}
                   className="col-start-6 col-end-13 p-3 rounded-lg"
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
                 >
                   <div className="flex items-center justify-start flex-row-reverse">
-                    <div className="flex items-center  justify-center h-10 w-10 rounded-full bg-indigo-400 text-white flex-shrink-0">
+                    <div className="flex items-center  justify-center h-10 w-10 rounded-full bg-indigo-400 textToSay-white flex-shrink-0">
                       U
                     </div>
-                    <div className="relative mr-3 text-sm bg-indigo-100 py-2 px-4 w=32 shadow rounded-xl">
+                    <div className="relative mr-3 textToSay-sm bg-indigo-100 py-2 px-4 w=32 shadow rounded-xl">
                       <div>{message.message}</div>
                     </div>
+                    {isHovered && (
+                      <div className="mr-3">
+                        <PlayPauseTTS textToSpeak={message.message} />
+                      </div>
+                    )}
                   </div>
                 </div>
               ) : (
                 <div
                   key={index}
                   className="col-start-1 col-end-8 p-3 rounded-lg"
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
                 >
                   <div className="flex flex-row items-center">
-                    <div className="flex items-center justify-center h-10 text-left text-white w-10 rounded-full bg-indigo-500 flex-shrink-0">
+                    <div className="flex items-center justify-center h-10 textToSay-left textToSay-white w-10 rounded-full bg-indigo-500 flex-shrink-0">
                       A
                     </div>
-
-                    <div className="relative ml-3 text-sm bg-white py-2 px-5 shadow rounded-xl">
+                    <div className="relative ml-3 textToSay-sm bg-white py-2 px-5 shadow rounded-xl">
                       <div>{message.message}</div>
                     </div>
+
+                    {isHovered && (
+                      <div className="ml-3">
+                        <PlayPauseTTS textToSpeak={message.message} />
+                      </div>
+                    )}
                   </div>
                 </div>
               )
@@ -135,7 +152,7 @@ const ChatPage = () => {
       <div className="flex flex-row items-center h-16 rounded-xl bg-white w-3/4 self-center mb-4 px-4 py-5">
         <div>
           <Link to="/r">
-            <button className="flex items-center justify-center text-gray-600 hover:text-gray-800">
+            <button className="flex items-center justify-center textToSay-gray-600 hover:textToSay-gray-800">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-6 h-6"
@@ -155,7 +172,7 @@ const ChatPage = () => {
           <div className="relative w-full">
             <form onSubmit={handleSubmit}>
               <input
-                type="text"
+                type="textToSay"
                 placeholder={t("messagePlaceholder")} // Get translated placeholder
                 className="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"
                 value={inputMessage}
@@ -167,11 +184,11 @@ const ChatPage = () => {
         <div className="ml-4">
           <button
             onClick={handleSubmit}
-            className="flex items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white px-3 py-1 flex-shrink-0"
+            className="flex items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl textToSay-white px-3 py-1 flex-shrink-0"
           >
             <span className="py-2 px=2">
               <svg
-                className="w-4 h-4 transform rotate-45 -mt-px"
+                className="w-4 h-4 transform rotate-45 text-white -mt-px"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -189,10 +206,10 @@ const ChatPage = () => {
         </div>
         <div className="ml-2">
           <Link to="/">
-            <button className="flex items-center justify-center text-gray-600 hover:text-gray-800">
+            <button className="flex items-center justify-center textToSay-gray-600 hover:textToSay-gray-800">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6"
+                className="w-6 h-6 "
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
