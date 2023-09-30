@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next"; // Import useTranslation
+import i18next from "i18next";
 
 const ChatPage = () => {
-  const { t } = useTranslation(); // Access the translation function
+  const { t } = useTranslation();
 
   const [inputMessage, setInputMessage] = useState("");
   const [messages, setMessages] = useState([]);
@@ -18,13 +19,11 @@ const ChatPage = () => {
         isUser: true,
       };
 
-      const aiResponseMessage = {
-        message: t("aiResponseMessage"), // Get translated AI response message
-        isUser: false,
-      };
-
-      setMessages([...messages, newUserMessage, aiResponseMessage]);
+      setMessages([...messages, newUserMessage]);
       setInputMessage("");
+
+      // Call the function to process the user message
+      processMessageToChatGpt(inputMessage);
     }
   };
 
@@ -35,14 +34,66 @@ const ChatPage = () => {
         isUser: true,
       };
 
-      const aiResponseMessage = {
-        message: t("aiResponseMessageExample"), // Get translated AI response message for examples
-        isUser: false,
-      };
+      setMessages([...messages, newUserMessage]);
 
-      setMessages([...messages, newUserMessage, aiResponseMessage]);
+      // Call the function to process the received message
+      processMessageToChatGpt(msg);
     }
   }, [msg]);
+
+  async function processMessageToChatGpt(message) {
+    const API_KEY = "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";
+    const apiUrl = "https://api.openai.com/v1/chat/completions"; // Replace with your API endpoint
+  
+    const requestBody = {
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "system",
+          content:
+            "ou're an AI agricultural assistant for Sarfraz's project, created by Usman Tanveer. Max response: 300 tokens, aim for brevity",
+        },
+        {
+          role: "user",
+          content: message,
+        },
+      ],
+    };
+  
+    try {
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to fetch AI response.");
+      }
+  
+      const responseData = await response.json();
+  
+      // Update AI response based on the API response
+      const aiResponse = responseData.choices[0].message.content;
+  
+      // Create a new AI response message object
+      const aiMessage = {
+        message: aiResponse,
+        isUser: false,
+      };
+  
+      // Use the functional update form of setMessages to ensure the latest state
+      setMessages((prevMessages) => [...prevMessages, aiMessage]);
+    } catch (error) {
+      console.error("Error processing AI response:", error);
+    }
+  }
+  
+  
+  
 
   return (
     <>
